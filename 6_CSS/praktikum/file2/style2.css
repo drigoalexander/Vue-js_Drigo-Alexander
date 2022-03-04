@@ -1,0 +1,151 @@
+body{
+    max-width: 1280px;
+    margin: auto;
+    height: 100vw;
+    width: 100vw;
+    background-color: grey;
+}
+
+nav{
+    background-color: white;
+  
+}
+
+.container {
+    display: flex;  
+    justify-content: space-between;
+    padding: 20px;
+    align-items: center;
+}
+
+.wrapper-nav{
+    display: flex;
+    gap: 20px;
+}
+
+.wrapper-nav > a {
+    text-decoration: none;
+}
+
+.section-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.content{
+    
+    margin-left: 150px;
+    margin-right: 150px;
+ 
+}
+
+.space-content{
+    background-color: white;
+    padding: 45px;
+    
+}
+
+.content .space-content:nth-child(odd){
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.title-content{
+    color: cornflowerblue;
+}
+
+footer{
+    padding-top: 100px;
+}
+
+.container-footer{
+    width: 100%;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-footer p{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 12px;
+}
+
+.dropdown{
+    display: none;
+}
+
+.dropdown-content{
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 80px;
+    z-index: 1;
+    right: 3px;
+}
+
+.dropdown-content a {
+    padding: 14px;
+    text-decoration: none;
+    display: block;
+    font-size: 12px;
+}
+
+.dropdown-content a:hover {
+    background-color: grey;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    justify-content: center;
+    align-items: center;
+}
+
+.dropbtn{
+    background-color: white;
+    text-decoration: none;
+    border: none;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .content{
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+
+    .space-content{
+        padding: 20px;
+    }
+
+    .title-content{
+        font-size: 12px;
+    }
+
+    .para-content{
+        font-size: 8px;
+    }
+
+    .container-footer p{
+        font-size: 8px;
+    }
+
+    .section-container h1 {
+        font-size: 16px;
+    }
+
+    .wrapper-nav {
+        display: none;
+    }
+
+    .dropdown{
+        display: inline-block;
+    }
+
+
+  }
