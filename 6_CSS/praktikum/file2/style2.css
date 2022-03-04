@@ -3,7 +3,7 @@ body{
     margin: auto;
     height: 100vw;
     width: 100vw;
-    background-color: grey;
+    background-image: url(/6_CSS/praktikum/img/sample-pattern.png);
 }
 
 nav{
@@ -61,7 +61,14 @@ footer{
     padding-top: 100px;
 }
 
+
+.space-footer{
+    width: 100%;
+    position: relative;
+}
 .container-footer{
+    position: absolute;
+    bottom: 0;
     width: 100%;
     background-color: black;
     color: white;
@@ -97,7 +104,7 @@ footer{
 }
 
 .dropdown-content a:hover {
-    background-color: grey;
+    background-color: #d3d3d3;
 }
 
 .dropdown:hover .dropdown-content {
