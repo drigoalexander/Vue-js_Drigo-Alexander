@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 10 - Frontend Fundamental</title>
+</head>
+
+<style>
+    body{
+        margin: 0;
+        width: 100vw;
+    }
+    
+    .container {
+  display: grid;
+  grid-template: auto ;
+}
+
+    #red{
+    
+        background-color: red;
+      
+    }
+
+    #green{
+       
+        background-color: green;
+
+    }
+    #blue{
+        background-color: blue;
+    }
+
+    #yellow{
+        background-color: yellow;
+    }
+
+    #purple{
+        background-color: purple;
+    }
+    #grey{
+        background-color: grey;
+    }
+    .container > div {
+
+  padding: 20px 0;
+  
+}
+
+@media only screen and (min-width:601px) and (max-width: 960px){
+    .container{
+        grid-template: auto / auto auto;
+    }
+    }
+
+@media only screen and (min-width: 960px){
+    .container{
+        grid-template: auto / auto auto auto;
+    }
+}
+
+</style>
+<body>
+    <div class="container">
+        <div class="content" id="red"></div>
+        <div class="content" id="green"></div>
+        <div class="content" id="blue"></div>
+        <div class="content" id="yellow"></div>
+        <div class="content" id="purple"></div>
+        <div class="content" id="grey"></div>
+    </div>
+</body>
+</html>
