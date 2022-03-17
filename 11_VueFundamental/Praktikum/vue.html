@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+
+    <script src="https://unpkg.com/vue@3"></script>
+
+    <div id="app">
+        <ul>
+            <li type="1" v-for="list in todo">{{ list }} </li>
+        </ul>
+        <input type="text" v-model="value">
+        <button v-on:click="addTodo">add</button>
+        <p v-if="todo.length >= 4">Hebat!</p>
+    </div>
+    <script>
+        Vue.createApp({
+          data() {
+            return {
+              todo: [],
+              value: ""
+            }
+          },
+          methods: {
+              addTodo: function(){
+                  this.todo.push(this.value)
+                  this.value = ""
+              }
+          }
+        }).mount('#app')
+      </script>
+  </body>
+  </html>    
+        
+    
+    
