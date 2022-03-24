@@ -1,24 +1,23 @@
 <template>
   <div id="app">
-
-  <div class="container">
-    <img src="./assets/logo.png" alt="" width="10%">
-  <h1>Todo List</h1><br>
-  <TodoItem/>
-  </div>
-  
+    <div class="container">
+      <img src="./assets/logo.png" alt="" width="10%" />
+      <h1>Todo List</h1>
+      <br />
+      <TodoItem />
+    </div>
   </div>
 </template>
 
 <script>
 // import tugas from './'
-import TodoItem from './components/TodoItem.vue'
+import TodoItem from "./components/TodoItem.vue";
 export default {
-  name: 'App',
+  name: "App",
   components: {
     TodoItem,
-  }
-}
+  },
+};
 </script>
 
 <style>
@@ -36,7 +35,7 @@ export default {
   justify-content: center;
   align-content: center;
 }
-.container{
+.container {
   width: 50%;
   margin: auto;
 }
