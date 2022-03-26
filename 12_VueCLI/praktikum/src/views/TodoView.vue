@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="app">
     <div
       v-if="!isEditing"
       class="flex justify-center items-center gap-x-4 text-xl"
@@ -34,7 +34,12 @@
         :key="list"
         class="flex gap-4 justify-center items-center font-bold uppercase"
       >
-        <router-link to="/details"> {{ list }} </router-link>
+        <router-link
+          to="/DetailsTodo"
+          class="underline decoration-solid decoration-white hover:decoration-lime-600 transition duration-300 decoration-2"
+        >
+          {{ list }}
+        </router-link>
 
         <button v-on:click="deleteList(index)">Delete</button>
         <button v-on:click="editTodo(index, list)">Edit</button>
@@ -46,9 +51,8 @@
 </template>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
-import router from "@/router/index";
 export default {
-  name: "TodoItem",
+  name: "app",
   data() {
     return {
       isEditing: false,
