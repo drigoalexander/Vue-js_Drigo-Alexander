@@ -5,8 +5,10 @@
     <!-- <p>{{ items }}</p> -->
     <h1
       class="uppercase font-extrabold text-5xl pb-10 bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-violet-700"
+      v-for="(value, index) in lists"
+      :key="index"
     >
-      {{ todo }}
+      {{ value }}
     </h1>
 
     <div class="flex justify-center items-center gap-10">
@@ -63,12 +65,14 @@ export default {
       isCancel: false,
       isEditing: false,
       todo: "",
+      index: "",
       newText: "",
     };
   },
 
   created() {
     this.todo = this.$route.params.item;
+    this.index = this.$route.params.indList;
   },
 
   methods: {
@@ -78,7 +82,10 @@ export default {
     },
 
     updateTodo() {
-      this.todo = this.newText;
+      this.$store.dispatch("updateTodo", {
+        indexList: this.index,
+        Word: this.newText,
+      });
       this.isEditing = false;
       this.isCancel = false;
     },
@@ -86,6 +93,12 @@ export default {
     cancelUpdate() {
       this.isEditing = false;
       this.isCancel = false;
+    },
+  },
+
+  computed: {
+    lists() {
+      return this.$store.state.listTodo;
     },
   },
 };

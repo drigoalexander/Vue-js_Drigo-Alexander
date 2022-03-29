@@ -1,5 +1,5 @@
-<template>
-  <div id="app" class="bg-[#121A27]">
+<template class="bg-[#121A27]">
+  <div id="app" class="bg-[#121A27] w-full h-full min-h-screen">
     <h1
       class="font-extrabold text-7xl pb-44 bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-violet-700"
     >
@@ -38,13 +38,13 @@
         <input
           class="border-2 border-lime-800 px-2 py-1 rounded-md"
           placeholder="Input todo list"
-          @keyup.enter="addTodo"
+          @keyup.enter="updateTodo"
           v-model="value"
         />
       </div>
       <button
         @click="updateTodo"
-        class="text-white ml-6 flex justify-end items-end self-end font-bold border-b border-[#121A27] hover:border-pink-400 border-b-2 hover:pb-0 tracking-widest uppercase transition duration-300 ease-in-out"
+        class="text-white ml-6 flex justify-end items-end self-end font-bold border-[#121A27] hover:border-pink-400 border-b-2 hover:pb-0 tracking-widest uppercase transition duration-300 ease-in-out"
       >
         Update
       </button>
@@ -53,12 +53,12 @@
     <ul class="py-10">
       <li
         type="1"
-        v-for="(list, index) in todo"
-        :key="list"
+        v-for="(list, index) in $store.state.listTodo"
+        :key="index"
         class="flex gap-10 justify-center items-center font-bold uppercase"
       >
         <h1
-          @click="Redirect(list)"
+          @click="Redirect(list, index)"
           class="text-white font-bold hover:text-pink-400 border-b-2 hover:pb-0 tracking-widest uppercase transition duration-300 ease-in-out"
         >
           {{ list }}
@@ -107,14 +107,13 @@ export default {
     addTodo: function () {
       if (this.value === "" || this.value === null) alert("Fill the box");
       else {
-        this.todo.push(this.value);
-        this.isDone.push(false);
+        this.$store.dispatch("addList", { isi: this.value });
         this.value = "";
       }
     },
 
     deleteList: function (index) {
-      this.todo.splice(index, 1);
+      this.$store.dispatch("deleteLists", { urutan: index });
     },
 
     editTodo: function (index, value) {
@@ -124,24 +123,19 @@ export default {
     },
 
     updateTodo() {
-      this.todo.splice(this.indexEdit, 1, this.value);
+      this.$store.dispatch("updateTodo", {
+        indexList: this.indexEdit,
+        Word: this.value,
+      });
+
       this.value = "";
       this.isEditing = false;
     },
 
-    checkDone(index) {
-      console.log(index + ":" + this.isDone[index]);
-      if (this.isDone[index] == false) {
-        this.isDone[index] = true;
-      } else this.isDone[index] = false;
-
-      console.log(index + ":" + this.isDone[index]);
-    },
-
-    Redirect(todosList) {
+    Redirect(todosList, indexLists) {
       this.$router.push({
         name: "DetailsTodo",
-        params: { item: todosList },
+        params: { item: todosList, indList: indexLists },
       });
     },
   },
@@ -149,6 +143,10 @@ export default {
   computed: {
     typeLength() {
       return this.value.length;
+    },
+
+    list() {
+      return this.$store.state.listTodo;
     },
   },
 };
