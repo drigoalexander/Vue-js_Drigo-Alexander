@@ -137,6 +137,10 @@ export default {
         name: "DetailsTodo",
         params: { item: todosList, indList: indexLists },
       });
+
+      this.$store.dispatch("updateIndex", {
+        listIndex: indexLists,
+      });
     },
   },
 

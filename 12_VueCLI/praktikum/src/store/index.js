@@ -14,9 +14,14 @@ export default new Vuex.Store({
 
   state: {
     listTodo: [],
+    indexState: "",
   },
 
-  getters: {},
+  getters: {
+    todoIndex(state) {
+      return state.listTodo[state.indexState];
+    },
+  },
 
   mutations: {
     setTodo(state, param) {
@@ -29,6 +34,9 @@ export default new Vuex.Store({
 
     setUpdate(state, param) {
       state.listTodo = param;
+    },
+    setIndex(state, param) {
+      state.indexState = param;
     },
   },
 
@@ -49,6 +57,11 @@ export default new Vuex.Store({
       const updateList = store.state.listTodo;
       updateList.splice(param.indexList, 1, param.Word);
       store.commit("setUpdate", updateList);
+    },
+    updateIndex(store, param) {
+      let indexes = store.state.index;
+      indexes = param.listIndex;
+      store.commit("setIndex", indexes);
     },
   },
 });
