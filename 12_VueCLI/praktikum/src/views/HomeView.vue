@@ -14,6 +14,14 @@
     >
       Start listing
     </router-link>
+
+    <router-link
+      to="News"
+      class="text-2xl text-white font-bold border-[#121A27] hover:border-pink-400 border-b-2 hover:pb-0 tracking-widest uppercase transition duration-300 ease-in-out"
+    >
+      See News
+    </router-link>
+
     <router-view />
   </div>
 </template>

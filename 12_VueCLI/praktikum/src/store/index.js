@@ -1,7 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import createPersistedState from "vuex-persistedstate";
-// import * as Cookies from "js-cookie";
+// import * as Cookies from "js-cookie";\
+// import axios from "axios";
 
 Vue.use(Vuex);
 
@@ -15,11 +16,31 @@ export default new Vuex.Store({
   state: {
     listTodo: [],
     indexState: "",
+    news: [
+      {
+        author: "",
+        imgUrl: "",
+        description: "",
+      },
+    ],
+    newsIndex: "",
   },
 
   getters: {
     todoIndex(state) {
       return state.listTodo[state.indexState];
+    },
+
+    author(state) {
+      return state.news.author[state.newsIndex];
+    },
+
+    imgUrl(state) {
+      return state.news.imgUrl[state.newsIndex];
+    },
+
+    description(state) {
+      return state.news.description[state.newsIndex];
     },
   },
 
@@ -37,6 +58,12 @@ export default new Vuex.Store({
     },
     setIndex(state, param) {
       state.indexState = param;
+    },
+    setIndexNews(state, param) {
+      state.newsIndex = param;
+    },
+    setNews(state, param) {
+      state.news = param;
     },
   },
 
@@ -62,6 +89,20 @@ export default new Vuex.Store({
       let indexes = store.state.index;
       indexes = param.listIndex;
       store.commit("setIndex", indexes);
+    },
+
+    fetchNews(store, param) {
+      const listNewses = store.state.news;
+      let listInd = store.state.newsIndex;
+
+      (listInd = param.indexList),
+        listNewses.push({
+          author: param.authorNews,
+          imgUrl: param.url,
+          description: param.desc,
+        });
+      store.commit("setNews", listNewses);
+      store.commit("setIndexNews", listInd);
     },
   },
 });
