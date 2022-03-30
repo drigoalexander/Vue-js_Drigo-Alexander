@@ -3,15 +3,15 @@
     <router-view />
 
     <div class="flex flex-col w-auto p-6 text-white">
-      <img v-bind:src="imgUrl" alt="" />
+      <img v-bind:src="ImgUrl" alt="" />
 
       <div class="text-left flex flex-col pt-4 gap-4">
         <h1>
-          {{ author }}
+          {{ Author }}
         </h1>
 
         <p>
-          {{ description }}
+          {{ Description }}
         </p>
       </div>
     </div>

@@ -32,15 +32,15 @@ export default new Vuex.Store({
     },
 
     author(state) {
-      return state.news.author[state.newsIndex];
+      return state.news[state.newsIndex].author;
     },
 
     imgUrl(state) {
-      return state.news.imgUrl[state.newsIndex];
+      return state.news[state.newsIndex].imgUrl;
     },
 
     description(state) {
-      return state.news.description[state.newsIndex];
+      return state.news[state.newsIndex].description;
     },
   },
 
