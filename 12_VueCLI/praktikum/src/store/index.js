@@ -1,3 +1,4 @@
+import axios from "axios";
 import Vue from "vue";
 import Vuex from "vuex";
 import createPersistedState from "vuex-persistedstate";
@@ -16,13 +17,7 @@ export default new Vuex.Store({
   state: {
     listTodo: [],
     indexState: "",
-    news: [
-      {
-        author: "",
-        imgUrl: "",
-        description: "",
-      },
-    ],
+    news: [],
     newsIndex: "",
   },
 
@@ -31,16 +26,8 @@ export default new Vuex.Store({
       return state.listTodo[state.indexState];
     },
 
-    author(state) {
-      return state.news[state.newsIndex].author;
-    },
-
-    imgUrl(state) {
-      return state.news[state.newsIndex].imgUrl;
-    },
-
-    description(state) {
-      return state.news[state.newsIndex].description;
+    newsWithIndex(state) {
+      return state.news[state.newsIndex];
     },
   },
 
@@ -62,7 +49,8 @@ export default new Vuex.Store({
     setIndexNews(state, param) {
       state.newsIndex = param;
     },
-    setNews(state, param) {
+
+    setList(state, param) {
       state.news = param;
     },
   },
@@ -91,17 +79,19 @@ export default new Vuex.Store({
       store.commit("setIndex", indexes);
     },
 
-    fetchNews(store, param) {
-      const listNewses = store.state.news;
-      let listInd = store.state.newsIndex;
-
-      (listInd = param.indexList),
-        listNewses.push({
-          author: param.authorNews,
-          imgUrl: param.url,
-          description: param.desc,
+    fetchList(store) {
+      axios
+        .get(
+          "https://newsapi.org/v2/everything?q=Apple&from=2022-03-30&sortBy=popularity&apiKey=05b0cf173740411d872776a4762388b4"
+        )
+        .then((res) => {
+          store.commit("setList", res.data.articles);
         });
-      store.commit("setNews", listNewses);
+    },
+
+    fetchNews(store, param) {
+      let listInd = store.state.newsIndex;
+      listInd = param.indexList;
       store.commit("setIndexNews", listInd);
     },
   },

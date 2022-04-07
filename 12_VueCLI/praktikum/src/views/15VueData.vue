@@ -1,8 +1,26 @@
-<template>
-  <div class="flex flex-col justify-center items-center gap-10">
+<template class="">
+  <v-app dark>
+    <side-menu :articles="News" />
+    <v-toolbar fixed app light clipped-left color="primary" class="elevation-2">
+      <v-toolbar-side-icon></v-toolbar-side-icon>
+      <v-toolbar-title class="white--text">News App</v-toolbar-title>
+    </v-toolbar>
+    <v-content>
+      <v-container fluid>
+        <cardnews
+          :articles="News"
+          @click="
+            Redirect(list.urlToImage, list.author, list.description, index)
+          "
+        ></cardnews>
+      </v-container>
+    </v-content>
+  </v-app>
+
+  <!-- <div class="flex flex-col justify-center items-center gap-10">
     <router-view />
 
-    <div class="text-white" v-for="(list, index) in news" :key="index">
+    <div class="text-white" v-for="(list, index) in News" :key="index">
       <div
         class="flex flex-col w-auto p-6"
         @click="Redirect(list.urlToImage, list.author, list.description, index)"
@@ -29,28 +47,31 @@
         move back
       </button>
     </div>
-  </div>
+  </div> -->
 </template>
 
 <script>
-import axios from "axios";
+// import axios from "axios";
+import cardnews from "../components/cardNews.vue";
+import sideMenu from "../components/sideMenu.vue";
 
 export default {
   name: "newsView",
+  components: {
+    cardnews,
+    sideMenu,
+  },
+
   data() {
     return {
       news: [],
+      drawer: false,
       //   indexList: ""
     };
   },
 
   mounted() {
-    axios
-      .get(
-        "https://newsapi.org/v2/everything?q=Apple&from=2022-03-30&sortBy=popularity&apiKey=05b0cf173740411d872776a4762388b4"
-      )
-      .then((res) => (this.news = res.data.articles))
-      .catch((err) => console.log(err));
+    this.fetchList();
   },
 
   methods: {
@@ -61,11 +82,12 @@ export default {
       });
 
       this.$store.dispatch("fetchNews", {
-        url: urImage,
-        authorNews: author,
-        desc: description,
         indexList: index,
       });
+    },
+
+    fetchList() {
+      this.$store.dispatch("fetchList");
     },
   },
 
