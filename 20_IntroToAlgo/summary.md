@@ -1,7 +1,7 @@
 ### Link
 
-Number 1 : https://notepad.pw/DrigoAlterraNo2
-Number 2 : https://notepad.pw/DrigoAlterraNo1
+Number 1 : https://notepad.pw/DrigoAlterraNo1
+Number 2 : https://notepad.pw/DrigoAlterraNo2
 Flowchart : https://whimsical.com/LzvexAdVEdLVXkhFKfoLe2
 
 ### Summary
