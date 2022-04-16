@@ -1,0 +1,18 @@
+{
+  "data": {
+    "keterangan_aggregate": {
+      "nodes": [
+        {
+          "anggotum": {
+            "nama": "Budi"
+          }
+        },
+        {
+          "anggotum": {
+            "nama": "Sita"
+          }
+        }
+      ]
+    }
+  }
+}
