@@ -1,5 +1,8 @@
 <template>
-  <div id="app" class="bg-[#121A27] w-screen h-full">
+  <div
+    id="app"
+    class="bg-[#121A27] w-screen h-full flex justify-center items-center"
+  >
     <router-view />
   </div>
 </template>
